@@ -1,0 +1,26 @@
+@import '../../../styles/global.css';
+
+.top-nav {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 0.05fr 0.05fr 1fr 0.05fr;
+    margin: 0;
+    border-radius: 3px;
+    border-color: lightblue;
+    border-bottom-style: outset;
+    padding: 10px 0;
+    background-color: ghostwhite;
+}
+
+.top-nav li {
+    list-style: none;
+    text-align: center;
+    padding: 4px 4px;
+}
+
+.top-nav li:last-child {
+    grid-column-end: 5;
+    justify-content: end;
+}
+
+
