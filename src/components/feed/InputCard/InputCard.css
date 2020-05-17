@@ -22,7 +22,6 @@
 .footer {
     border-top-style: outset;
     border-color: #6e8992;
-
 }
 
 .header-footer-container h3 {
@@ -35,22 +34,8 @@
     grid-template-columns: 0.25fr 1.75fr;
 }
 
-
 #input-container textarea {
     width: 100%;
-    box-sizing: border-box;
-    padding: 1em 1em;
-    color: black;
-    border-radius: 4px;
-    background-color: rgb(255, 255, 255);
-    border: none;
-    font-size: 1rem;
-    outline: none;
-    resize: none;
-}
-
-#input-container textarea:focus {
-    outline:none;
 }
 
 #icon-post {

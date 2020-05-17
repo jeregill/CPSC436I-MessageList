@@ -27,8 +27,9 @@ button {
     border: none;
     color: white;
     text-decoration: none;
+    text-align: center;
     cursor: pointer;
-    padding: 1.5vh 1.5vw;
+    padding: 1vh 0.25vw;
     border-radius: 3px;
     box-shadow: 0 3px 15px rgba(0,0,0,0.2);
     font-size: 1rem;
@@ -44,3 +45,18 @@ button:disabled {
     cursor: auto;
 }
 
+textarea {
+    box-sizing: border-box;
+    padding: 1em 1em;
+    color: black;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+}
+
+textarea:focus {
+    outline:none;
+}
