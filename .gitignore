@@ -110,9 +110,4 @@ fabric.properties
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
-public/images/
-src/actions/
-src/components/profile/
-src/reducers/
-src/store/
 /.idea/
