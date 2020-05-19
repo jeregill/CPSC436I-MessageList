@@ -17,11 +17,13 @@ export interface State {
     posts: Post[];
     currentUser: User;
 }
+
 export interface Post {
     id?: number;
     content: string;
     user: string;
     likes: number;
+    dislikes: number;
     comments: Comment[];
     visible: boolean;
 }

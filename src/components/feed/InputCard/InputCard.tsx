@@ -1,6 +1,6 @@
 import React, {ChangeEvent, Component} from 'react';
-// import PropTypes from 'prop-types';
 import './InputCard.css';
+import '../../../styles/card.css';
 import {Post} from "../../../store/state";
 
 interface PostInputState {
@@ -23,7 +23,7 @@ class InputCard extends Component<any, PostInputState> {
     public handleSubmitPost(event: any): void {
         event.preventDefault();
         this.setState({textContent: ''});
-        this.props.submitPost(this.createPost);
+        this.props.submitPost(this.createPost());
     }
 
     public handleChange(event: ChangeEvent<HTMLElement>): void{
@@ -39,6 +39,7 @@ class InputCard extends Component<any, PostInputState> {
         return {
             user: this.state.username,
             likes: 0,
+            dislikes: 0,
             comments: [],
             content: this.state.textContent,
             visible: true
@@ -47,8 +48,8 @@ class InputCard extends Component<any, PostInputState> {
 
     render() {
         return (
-            <div className="input-card">
-                <div className="header-footer-container header">
+            <div className="card">
+                <div className="header-footer header">
                 <h3>Create Post</h3>
                 </div>
                 <form>
@@ -58,10 +59,11 @@ class InputCard extends Component<any, PostInputState> {
                                    value={this.state.textContent}
                                    onChange={this.handleChange}/>
                 </div>
-                <div className="header-footer-container footer side-by-side-button-container">
+                <div className="header-footer footer side-by-side-button-container">
                     <button type="button" className="side-by-side-buttons" id="post-button"
                             onClick={this.handleSubmitPost}
                             disabled={this.isTextAreaEmpty()}>Post</button>
+                    <div className="divider"></div>
                     <button type="button" className="side-by-side-buttons" id="clear-button"
                             disabled={this.isTextAreaEmpty()}>Clear</button>
                 </div>

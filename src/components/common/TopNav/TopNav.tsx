@@ -11,13 +11,13 @@ const TopNav: FunctionComponent<Props> = () => {
       <div>
           <ul className='top-nav'>
               <li>
-                  <a><i className="material-icons">home</i></a>
+                  <i className="material-icons">home</i>
                   </li>
               <li>
-                  <a><i className="material-icons">info</i></a>
+                  <i className="material-icons">info</i>
               </li>
               <li>
-                  <a><i className="material-icons">settings</i></a>
+                  <i className="material-icons">settings</i>
               </li>
           </ul>
       </div>

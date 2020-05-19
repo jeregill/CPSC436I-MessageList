@@ -6,28 +6,22 @@ function posts(state: Post[]=[], action: any) {
     // only dealing with the posts, so state here refers to the Post[] property
     switch(action.type) {
         case POST_ACTIONS.ADD_POST:
-            return Object.assign({}, state, {
-                posts: [
+            return [
                     ...state, action.payload
-                ]
-            });
+                ];
         case POST_ACTIONS.DELETE_POST:
-            return Object.assign({}, state, {
-                posts: state.filter((post, index) => {
+            return state.filter((post, index) => {
                     return post.id !== action.payload;
-                })
-            });
+                });
         case POST_ACTIONS.TOGGLE_VISIBILITY_POST:
-            return Object.assign({}, state, {
-                posts: state.map((post, index) => {
+            return state.map((post, index) => {
                     if (index === action.payload) {
                         return Object.assign({}, post, {
                             visible: !post.visible
                         })
                     }
                     return post;
-                })
-            });
+                });
         default:
             return state;
     }
