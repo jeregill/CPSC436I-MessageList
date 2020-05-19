@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import TopNav from "./components/common/TopNav/TopNav";
-import InputCard from "./components/feed/InputCard/InputCard";
+import PostCard from "./components/feed/PostCard/PostCard";
+import InputCardContainer from "./components/feed/InputCard/InputCardContainer";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <TopNav />
     </div>
       <div id='content'>
-          <InputCard />
+          <InputCardContainer />
+          <PostCard />
       </div>
       </div>
   );

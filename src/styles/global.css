@@ -37,7 +37,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--fifth-color);
+    background-color: var(--tertiary-color);
 }
 
 button:disabled {

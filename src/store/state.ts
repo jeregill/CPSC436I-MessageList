@@ -18,7 +18,7 @@ export interface State {
     currentUser: User;
 }
 export interface Post {
-    id: number;
+    id?: number;
     content: string;
     user: string;
     likes: number;
@@ -27,7 +27,7 @@ export interface Post {
 }
 
 export interface User {
-    id: number;
+    id?: number;
     name: string;
     profilePhoto: string;
     posts: Post[];
