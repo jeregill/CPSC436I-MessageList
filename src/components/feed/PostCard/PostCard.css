@@ -1,1 +1,52 @@
 @import '../../../styles/global.css';
+
+#posts-content h2 {
+    margin: 0 2vw;
+}
+#posts-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#posts-header span {
+    align-self: center;
+    justify-self: center;
+}
+
+#text-container {
+    display: grid;
+    grid-template-rows: 1.8fr 0.2fr;
+}
+
+.tri-count-container {
+    display: grid;
+    grid-template-columns: 3.55fr 0.15fr 0.15fr 0.15fr;
+    padding-bottom: 0.5em;
+    padding-right: 0.25em;
+}
+
+div.post-reactions-count span {
+    font-size: 0.75em;
+    padding: 0.2em 0.2em;
+    text-align: right;
+    white-space: nowrap;
+}
+
+
+.tri-icon-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+div.post-reactions {
+    width: 75%;
+    display: grid;
+    align-self: center;
+    justify-self: center;
+}
+
+div.post-reactions:hover {
+    background-color: gainsboro;
+    cursor: pointer;
+    transform: scale(1.25)
+}

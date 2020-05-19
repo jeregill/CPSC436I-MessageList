@@ -1,30 +1,6 @@
 @import '../../../styles/global.css';
 
-.input-card {
-    border-radius: 3px;
-    border: 3px solid var(--fourth-color);
-    margin: 3vh 3vw;
-    padding: 0;
-    width: 75%;
-}
-
-.header-footer-container {
-    margin: 0;
-    padding: 1vh 1vw;
-    border-color: lightblue;
-    background-color: ghostwhite;
-}
-
-.header {
-    border-bottom-style: outset;
-}
-
-.footer {
-    border-top-style: outset;
-    border-color: #6e8992;
-}
-
-.header-footer-container h3 {
+.header-footer h3 {
     margin: 0;
     padding: 0;
 }
@@ -48,11 +24,15 @@
 
 .side-by-side-button-container {
     display: grid;
-    grid-template-columns: 1fr 0.1fr 0.1fr;
+    grid-template-columns: 2.1fr 0.4fr 0.1fr 0.4fr;
 }
 
 .side-by-side-buttons{
-    width: 75%;
+    width: 100%;
     justify-self: flex-end;
     align-self: center;
+}
+
+.divider {
+    height:auto;
 }
