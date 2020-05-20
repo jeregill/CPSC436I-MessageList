@@ -13,7 +13,6 @@ class InputCard extends Component<InputCardProps, InputCardState> {
 
     constructor(props: InputCardProps) {
         super(props);
-        console.log(props);
         this.state = {
             textContent: '',
             username: this.props.username
@@ -44,6 +43,7 @@ class InputCard extends Component<InputCardProps, InputCardState> {
             likes: 0,
             dislikes: 0,
             comments: [],
+            commentsVisible: false,
             content: this.state.textContent
         };
     }

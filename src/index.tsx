@@ -5,9 +5,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import socialMediaApp from "./reducers/reducers";
-import {createStore} from "redux";
+import {  createStore} from "redux";
+import {composeWithDevTools} from "redux-devtools-extension";
 
-const store = createStore(socialMediaApp)
+const store = createStore(socialMediaApp, composeWithDevTools())
 
 ReactDOM.render(
   <Provider store={store}>

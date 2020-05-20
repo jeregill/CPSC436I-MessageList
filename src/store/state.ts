@@ -20,7 +20,8 @@ export interface Post {
     user: string;
     likes: number;
     dislikes: number;
-    comments: Comment[];
+    comments: string[];
+    commentsVisible: boolean;
 }
 
 export interface User {

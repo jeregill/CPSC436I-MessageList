@@ -19,6 +19,11 @@
     grid-template-rows: 1.8fr 0.2fr;
 }
 
+.dual-container {
+    display: grid;
+    grid-template-columns: 1.8fr 0.2fr;
+}
+
 .tri-count-container {
     display: grid;
     grid-template-columns: 3.55fr 0.15fr 0.15fr 0.15fr;
@@ -55,4 +60,9 @@ div.post-reactions:hover {
 .material-icons.show-hide:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+#show-comments:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }

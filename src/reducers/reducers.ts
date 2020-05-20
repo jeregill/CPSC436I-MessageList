@@ -22,6 +22,43 @@ function posts(state: Post[]=[], action: any) {
                 }
                 return post;
             });
+        case POST_ACTIONS.DISLIKE_POST:
+            return state.map((post) => {
+                if (post.id === action.payload) {
+                    return {
+                        ...post, dislikes: ++post.dislikes
+                    }
+                }
+                return post;
+            });
+        case POST_ACTIONS.COMMENT_POST:
+            return state.map((post) => {
+                if (post.id === action.payload.id) {
+                    return {
+                        ...post, comments: [...post.comments, action.payload.commentContent], commentsVisible: true
+                    }
+                }
+                return post;
+            });
+        case POST_ACTIONS.TOGGLE_COMMENTS:
+            return state.map((post) => {
+                if (post.id === action.payload) {
+                    return {
+                        ...post, commentsVisible: !post.commentsVisible
+                    }
+                }
+                return post;
+            });
+        case POST_ACTIONS.EDIT_POST:
+            return state.map((post) => {
+                if (post.id === action.payload.id) {
+                    return {
+                        ...post, content: action.payload.editContent
+                    }
+                }
+                return post;
+            });
+
         default:
             return state;
     }

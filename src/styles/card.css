@@ -6,18 +6,22 @@
     width: 75%;
 }
 
-.card .header-footer {
+.card-with-comment {
+    margin-bottom: 0;
+}
+
+.header-footer {
     margin: 0;
     padding: 1vh 1vw;
     border-color: lightblue;
     background-color: ghostwhite;
 }
 
-.card .header {
+.header {
     border-bottom-style: outset;
 }
 
-.card .footer {
+.footer {
     border-top-style: outset;
     border-color: #6e8992;
 }

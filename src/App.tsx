@@ -15,6 +15,7 @@ function App() {
           <InputCardContainer />
           <PostsListContainer />
          </div>
+          <div className="empty-space"></div>
       </div>
   );
 }
