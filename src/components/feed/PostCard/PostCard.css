@@ -1,8 +1,9 @@
 @import '../../../styles/global.css';
 
-#posts-content h2 {
+#posts-header h2 {
     margin: 0 2vw;
 }
+
 #posts-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -49,4 +50,9 @@ div.post-reactions:hover {
     background-color: gainsboro;
     cursor: pointer;
     transform: scale(1.25)
+}
+
+.material-icons.show-hide:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }

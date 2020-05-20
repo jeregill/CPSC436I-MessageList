@@ -1,19 +1,20 @@
 import React from 'react';
 import './App.css';
 import TopNav from "./components/common/TopNav/TopNav";
-import PostCard from "./components/feed/PostCard/PostCard";
+import PostsListContainer from "./components/feed/PostCard/PostsListContainer";
 import InputCardContainer from "./components/feed/InputCard/InputCardContainer";
 
 function App() {
-  return (
+    return (
       <div>
-    <div id="header">
-      <TopNav />
-    </div>
-      <div id='content'>
+        <div id="header">
+             <TopNav />
+        </div>
+        <div id='content'>
+
           <InputCardContainer />
-          <PostCard />
-      </div>
+          <PostsListContainer />
+         </div>
       </div>
   );
 }

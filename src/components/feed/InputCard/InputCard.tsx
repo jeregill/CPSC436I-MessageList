@@ -2,16 +2,18 @@ import React, {ChangeEvent, Component} from 'react';
 import './InputCard.css';
 import '../../../styles/card.css';
 import {Post} from "../../../store/state";
+import {InputCardProps} from "./InputCardContainer";
 
-interface PostInputState {
+interface InputCardState {
     textContent: string;
     username: string;
 }
 
-class InputCard extends Component<any, PostInputState> {
+class InputCard extends Component<InputCardProps, InputCardState> {
 
-    constructor(props: any) {
+    constructor(props: InputCardProps) {
         super(props);
+        console.log(props);
         this.state = {
             textContent: '',
             username: this.props.username
@@ -20,7 +22,7 @@ class InputCard extends Component<any, PostInputState> {
         this.handleSubmitPost = this.handleSubmitPost.bind(this);
     }
 
-    public handleSubmitPost(event: any): void {
+    public handleSubmitPost(event:any): void {
         event.preventDefault();
         this.setState({textContent: ''});
         this.props.submitPost(this.createPost());
@@ -38,11 +40,11 @@ class InputCard extends Component<any, PostInputState> {
     public createPost(): Post {
         return {
             user: this.state.username,
+            id: -1,
             likes: 0,
             dislikes: 0,
             comments: [],
-            content: this.state.textContent,
-            visible: true
+            content: this.state.textContent
         };
     }
 

@@ -1,5 +1,5 @@
-import {initialState, initialUser, Post, State, User} from "../store/state";
-import {action, POST_ACTIONS, USER_ACTIONS} from "../actions/actions";
+import {initialUser, Post, User} from "../store/state";
+import {POST_ACTIONS, USER_ACTIONS} from "../actions/actions";
 import {combineReducers} from "redux";
 
 function posts(state: Post[]=[], action: any) {
@@ -10,24 +10,24 @@ function posts(state: Post[]=[], action: any) {
                     ...state, action.payload
                 ];
         case POST_ACTIONS.DELETE_POST:
-            return state.filter((post, index) => {
+            return state.filter((post) => {
                     return post.id !== action.payload;
                 });
-        case POST_ACTIONS.TOGGLE_VISIBILITY_POST:
-            return state.map((post, index) => {
-                    if (index === action.payload) {
-                        return Object.assign({}, post, {
-                            visible: !post.visible
-                        })
+        case POST_ACTIONS.LIKE_POST:
+            return state.map((post) => {
+                if (post.id === action.payload) {
+                    return {
+                        ...post, likes: ++post.likes
                     }
-                    return post;
-                });
+                }
+                return post;
+            });
         default:
             return state;
     }
 }
 
-function currentUser(state: User= initialUser, action: any) {
+function currentUser(state: User = initialUser, action: any) {
     // only dealing with the current user, so state here refers to the currentUser property
     switch(action.type) {
         case USER_ACTIONS.ADD_USER:
@@ -39,9 +39,19 @@ function currentUser(state: User= initialUser, action: any) {
     }
 }
 
+function postsVisible(state: boolean = true, action: any) {
+    switch (action.type) {
+        case POST_ACTIONS.TOGGLE_POSTS:
+            return !state;
+        default:
+            return state;
+    }
+}
+
 const socialMediaApp = combineReducers({
     posts,
-    currentUser
+    currentUser,
+    postsVisible
 });
 
 export default socialMediaApp;

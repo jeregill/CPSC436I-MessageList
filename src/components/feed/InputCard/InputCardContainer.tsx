@@ -1,19 +1,32 @@
 import {Post, State} from "../../../store/state";
-import {addPost, POST_ACTIONS} from "../../../actions/actions";
+import {action, addPost} from "../../../actions/actions";
 import {connect} from "react-redux";
 import InputCard from "./InputCard";
+import {Dispatch} from "react";
 
-function mapStateToProps (state: State): any {
-  const { posts, currentUser } = state;
+interface InputCardStateToProps {
+  username: string;
+}
+
+interface InputCardDispatchToProps {
+  submitPost: (post: Post) => void;
+}
+
+export type InputCardProps = InputCardStateToProps & InputCardDispatchToProps
+
+
+const mapStateToProps = (state: State): InputCardStateToProps => {
+  const { currentUser } = state;
   return {
     username: currentUser.name
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<action>): InputCardDispatchToProps => {
   return {
     submitPost: (post: Post) => dispatch(addPost(post))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InputCard);
+export default connect<InputCardStateToProps, InputCardDispatchToProps, {}, State>(
+    mapStateToProps, mapDispatchToProps)(InputCard);

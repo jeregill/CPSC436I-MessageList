@@ -7,25 +7,20 @@ export const initialUser: User = {
     following: []
 }
 
-// state of object
-export const initialState: State = {
-    posts: [],
-    currentUser: initialUser
-}
 
 export interface State {
     posts: Post[];
+    postsVisible: boolean;
     currentUser: User;
 }
 
 export interface Post {
-    id?: number;
+    id: number;
     content: string;
     user: string;
     likes: number;
     dislikes: number;
     comments: Comment[];
-    visible: boolean;
 }
 
 export interface User {

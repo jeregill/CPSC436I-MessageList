@@ -8,7 +8,9 @@ export interface action {
 export enum POST_ACTIONS {
     ADD_POST= 'ADD_POST',
     DELETE_POST = 'DELETE_POST',
-    TOGGLE_VISIBILITY_POST ='TOGGLE_VISIBILITY_POST'
+    TOGGLE_POSTS ='TOGGLE_POSTS',
+    LIKE_POST = 'LIKE_POST',
+    DISLIKE_POST = 'DISLIKE_POST'
 }
 
 export enum USER_ACTIONS {
@@ -19,6 +21,20 @@ export enum USER_ACTIONS {
 let postID: number = 0;
 
 // Action creators
+export function likePost(id: number): action {
+    return {
+        type: POST_ACTIONS.LIKE_POST,
+        payload: id
+    }
+}
+
+export function dislikePost(id: number): action {
+    return {
+        type: POST_ACTIONS.DISLIKE_POST,
+        payload: id
+    }
+}
+
 export function addPost(content: Post): action {
     return {
         type: POST_ACTIONS.ADD_POST,
@@ -32,9 +48,9 @@ export function deletePost(id: number): action {
         payload: id
     }
 }
-export function toggleVisibilityPost(id: number): action {
+export function togglePosts(): action {
     return {
-        type: POST_ACTIONS.TOGGLE_VISIBILITY_POST,
-        payload: id
+        type: POST_ACTIONS.TOGGLE_POSTS,
+        payload: null
     }
 }
