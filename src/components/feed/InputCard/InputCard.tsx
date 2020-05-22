@@ -19,6 +19,7 @@ class InputCard extends Component<InputCardProps, InputCardState> {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmitPost = this.handleSubmitPost.bind(this);
+        this.handleClearPost = this.handleClearPost.bind(this);
     }
 
     public handleSubmitPost(event:any): void {
@@ -34,6 +35,11 @@ class InputCard extends Component<InputCardProps, InputCardState> {
 
     public isTextAreaEmpty(): boolean {
         return this.state.textContent === '' || this.state.textContent === null || this.state.textContent === undefined;
+    }
+
+    public handleClearPost(event:any): void {
+        event.preventDefault();
+        this.setState({textContent: ''});
     }
 
     public createPost(): Post {
@@ -67,7 +73,8 @@ class InputCard extends Component<InputCardProps, InputCardState> {
                             disabled={this.isTextAreaEmpty()}>Post</button>
                     <div className="divider"></div>
                     <button type="button" className="side-by-side-buttons" id="clear-button"
-                            disabled={this.isTextAreaEmpty()}>Clear</button>
+                            disabled={this.isTextAreaEmpty()}
+                    onClick={this.handleClearPost}>Clear</button>
                 </div>
                 </form>
             </div>

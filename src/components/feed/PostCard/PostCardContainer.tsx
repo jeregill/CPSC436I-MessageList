@@ -6,6 +6,7 @@ import PostCard from "./PostCard";
 interface PostCardStateToProps {
     post: Post;
     username:string;
+    userID: number;
 }
 
 interface PostCardDispatchToProps {
@@ -25,7 +26,8 @@ const mapStateToProps = (state: State, ownProps: PostCardOwnProps): PostCardStat
     const { posts, currentUser } = state;
     return {
         post: posts.find(p => p.id === ownProps.id),
-        username: currentUser.name
+        username: currentUser.name,
+        userID: currentUser.id
     } as PostCardStateToProps
 }
 

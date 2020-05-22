@@ -46,6 +46,7 @@ class PostCard extends Component<PostCardProps, PostCardState> {
         this.props.showComments(this.props.post.id);
     }
 
+
     render() {
         return (
             <div id="posts-content">
