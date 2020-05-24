@@ -18,6 +18,7 @@ class PostCard extends Component<PostCardProps, PostCardState> {
         this.state = {leaveComment: false, editPost: false, editedContent: this.props.post.content};
         this.handleLike = this.handleLike.bind(this);
         this.handleDislike = this.handleDislike.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         this.handleComment = this.handleComment.bind(this);
         this.showComments= this.showComments.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
@@ -36,6 +37,13 @@ class PostCard extends Component<PostCardProps, PostCardState> {
         event.preventDefault();
         if (this.props.post.id != null) {
             this.props.dislikePost(this.props.post.id);
+        }
+    }
+
+    public handleDelete(event:any){
+        event.preventDefault();
+        if (this.props.post.id != null) {
+            this.props.deletePost(this.props.post.id);
         }
     }
 
@@ -74,7 +82,11 @@ class PostCard extends Component<PostCardProps, PostCardState> {
                 <div className="card" style={{marginBottom: this.state.leaveComment || this.props.post.commentsVisible ? '0': '2vh'}}>
                     <div className="header-footer header dual-container">
                         <h3>{this.props.poster} posted something</h3>
-                        {this.props.currentUserID === this.props.post.id && (<i className="material-icons show-hide" onClick={this.handleEdit}>edit</i>)}
+                        {this.props.currentUserID === this.props.post.id &&
+                        (<div className="side-by-side-icons">
+                            <i className="material-icons show-hide" onClick={this.handleEdit}>edit</i>
+                            <i className="material-icons show-hide" onClick={this.handleDelete}>delete</i>
+                        </div>)}
                     </div>
                         <div id="text-container">
                             <p contentEditable={this.state.editPost} onChange={this.handleEditChange} suppressContentEditableWarning={true}>{this.props.post.content}</p>

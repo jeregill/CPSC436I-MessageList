@@ -1,5 +1,5 @@
 import {Post, State} from "../../../store/state";
-import {dislikePost, editPost, likePost, toggleComments} from "../../../actions/actions";
+import {deletePost, dislikePost, editPost, likePost, toggleComments} from "../../../actions/actions";
 import {connect} from "react-redux";
 import PostCard from "./PostCard";
 
@@ -14,6 +14,7 @@ interface PostCardDispatchToProps {
     dislikePost: (id: number) => void;
     showComments: (id:number) => void;
     editPost: (id:number, editedContent: string) => void;
+    deletePost: (id:number) => void;
 }
 
 interface PostCardOwnProps {
@@ -40,7 +41,8 @@ const mapDispatchToProps = (dispatch: any): PostCardDispatchToProps => {
         likePost: (id: number) => dispatch(likePost(id)),
         dislikePost: (id: number) => dispatch(dislikePost(id)),
         showComments: (id: number) => dispatch(toggleComments(id)),
-        editPost: (id: number, editedContent:string) => dispatch(editPost(editedContent,id))
+        editPost: (id: number, editedContent:string) => dispatch(editPost(editedContent,id)),
+        deletePost: (id:number) => dispatch(deletePost(id))
     }
 }
 

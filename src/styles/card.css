@@ -43,3 +43,8 @@ textarea, p {
 textarea:focus {
     outline:none;
 }
+
+.side-by-side-icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
