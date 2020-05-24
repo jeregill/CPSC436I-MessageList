@@ -44,7 +44,7 @@ class InputCard extends Component<InputCardProps, InputCardState> {
 
     public createPost(): Post {
         return {
-            user: this.state.username,
+            userID: this.props.userID,
             id: -1,
             likes: 0,
             dislikes: 0,

@@ -7,18 +7,22 @@ import LeaveCommentContainer from "../CommentCard/LeaveCommentContainer";
 
 interface PostCardState {
     leaveComment: boolean;
+    editPost: boolean;
+    editedContent: string;
 }
-
 
 class PostCard extends Component<PostCardProps, PostCardState> {
 
     constructor(props: PostCardProps) {
         super(props);
-        this.state = {leaveComment: false};
+        this.state = {leaveComment: false, editPost: false, editedContent: this.props.post.content};
         this.handleLike = this.handleLike.bind(this);
         this.handleDislike = this.handleDislike.bind(this);
         this.handleComment = this.handleComment.bind(this);
         this.showComments= this.showComments.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        this.submitEdit= this.submitEdit.bind(this);
+        this.handleEditChange = this.handleEditChange.bind(this);
     }
 
     public handleLike(event:any){
@@ -46,18 +50,35 @@ class PostCard extends Component<PostCardProps, PostCardState> {
         this.props.showComments(this.props.post.id);
     }
 
+    public handleEdit(event: any) {
+        event.preventDefault();
+        this.setState({editPost: !this.state.editPost})
+    }
+
+    public handleEditChange(event:any){
+        event.preventDefault();
+        this.setState({editedContent: (event.target as HTMLInputElement).value})
+    }
+
+    public submitEdit(event:any) {
+        event.preventDefault();
+        this.props.editPost(this.props.post.id, this.state.editedContent);
+        this.setState({editPost: false})
+        console.log('submit');
+    }
+
 
     render() {
         return (
             <div id="posts-content">
                 <div className="card" style={{marginBottom: this.state.leaveComment || this.props.post.commentsVisible ? '0': '2vh'}}>
                     <div className="header-footer header dual-container">
-                        <h3>{this.props.post.user} posted something</h3>
-                        <i className="material-icons">edit</i>
-
+                        <h3>{this.props.poster} posted something</h3>
+                        {this.props.currentUserID === this.props.post.id && (<i className="material-icons show-hide" onClick={this.handleEdit}>edit</i>)}
                     </div>
                         <div id="text-container">
-                            <p>{this.props.post.content}</p>
+                            <p contentEditable={this.state.editPost} onChange={this.handleEditChange} suppressContentEditableWarning={true}>{this.props.post.content}</p>
+                            {this.state.editPost && (<button onClick={this.submitEdit} type="button" id="submit-edit-button">Submit Edit</button>)}
                             <div className="tri-count-container">
                                 <div className="divider"></div>
                                 <div className="post-reactions-count">

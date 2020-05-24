@@ -6,6 +6,7 @@ import {Dispatch} from "react";
 
 interface InputCardStateToProps {
   username: string;
+  userID: number;
 }
 
 interface InputCardDispatchToProps {
@@ -18,7 +19,8 @@ export type InputCardProps = InputCardStateToProps & InputCardDispatchToProps
 const mapStateToProps = (state: State): InputCardStateToProps => {
   const { currentUser } = state;
   return {
-    username: currentUser.name
+    username: currentUser.name,
+    userID: currentUser.id
   }
 }
 

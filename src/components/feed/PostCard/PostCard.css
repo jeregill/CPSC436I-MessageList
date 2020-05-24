@@ -66,3 +66,10 @@ div.post-reactions:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
+
+#submit-edit-button {
+    width: 20%;
+    align-self: center;
+    justify-self: flex-end;
+    margin: 0 1vw 1vh 1vw;
+}

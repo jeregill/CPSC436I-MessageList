@@ -1,15 +1,6 @@
-export const initialUser: User = {
-    id: 1,
-    name: 'Larry David',
-    profilePhoto: 'Empty',
-    posts: [],
-    followers: [],
-    following: []
-}
-
-
 export interface State {
     posts: Post[];
+    users: User[];
     postsVisible: boolean;
     currentUser: User;
 }
@@ -17,7 +8,7 @@ export interface State {
 export interface Post {
     id: number;
     content: string;
-    user: string;
+    userID: number;
     likes: number;
     dislikes: number;
     comments: string[];
@@ -25,7 +16,7 @@ export interface Post {
 }
 
 export interface User {
-    id?: number;
+    id: number;
     name: string;
     profilePhoto: string;
     posts: Post[];

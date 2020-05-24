@@ -1,19 +1,19 @@
 import {Post, State} from "../../../store/state";
-import {dislikePost, likePost, toggleComments} from "../../../actions/actions";
+import {dislikePost, editPost, likePost, toggleComments} from "../../../actions/actions";
 import {connect} from "react-redux";
 import PostCard from "./PostCard";
 
 interface PostCardStateToProps {
     post: Post;
-    username:string;
-    userID: number;
+    poster:string;
+    currentUserID: number;
 }
 
 interface PostCardDispatchToProps {
     likePost: (id: number) => void;
     dislikePost: (id: number) => void;
     showComments: (id:number) => void;
-
+    editPost: (id:number, editedContent: string) => void;
 }
 
 interface PostCardOwnProps {
@@ -23,11 +23,15 @@ interface PostCardOwnProps {
 export type PostCardProps = PostCardStateToProps & PostCardDispatchToProps & PostCardOwnProps;
 
 const mapStateToProps = (state: State, ownProps: PostCardOwnProps): PostCardStateToProps => {
-    const { posts, currentUser } = state;
+    const { posts, currentUser, users } = state;
+    const currPost = posts.find(p => p.id === ownProps.id);
+    // @ts-ignore
+    const posterName = users.find(u=> u.id === currPost.userID)
     return {
-        post: posts.find(p => p.id === ownProps.id),
-        username: currentUser.name,
-        userID: currentUser.id
+        post: currPost,
+        // @ts-ignore
+        poster: posterName.name,
+        currentUserID: currentUser.id
     } as PostCardStateToProps
 }
 
@@ -35,7 +39,8 @@ const mapDispatchToProps = (dispatch: any): PostCardDispatchToProps => {
     return {
         likePost: (id: number) => dispatch(likePost(id)),
         dislikePost: (id: number) => dispatch(dislikePost(id)),
-        showComments: (id: number) => dispatch(toggleComments(id))
+        showComments: (id: number) => dispatch(toggleComments(id)),
+        editPost: (id: number, editedContent:string) => dispatch(editPost(editedContent,id))
     }
 }
 

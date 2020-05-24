@@ -1,8 +1,9 @@
-import {initialUser, Post, User} from "../store/state";
+import { Post, User} from "../store/state";
 import {POST_ACTIONS, USER_ACTIONS} from "../actions/actions";
 import {combineReducers} from "redux";
+import {initialPosts, initialUser, initialUsers} from "../store/stubbedData";
 
-function posts(state: Post[]=[], action: any) {
+function posts(state: Post[]=initialPosts, action: any) {
     // only dealing with the posts, so state here refers to the Post[] property
     switch(action.type) {
         case POST_ACTIONS.ADD_POST:
@@ -53,7 +54,7 @@ function posts(state: Post[]=[], action: any) {
             return state.map((post) => {
                 if (post.id === action.payload.id) {
                     return {
-                        ...post, content: action.payload.editContent
+                        ...post, content: action.payload.editedContent
                     }
                 }
                 return post;
@@ -85,10 +86,15 @@ function postsVisible(state: boolean = true, action: any) {
     }
 }
 
+function users(state: User[] = initialUsers, action: any) {
+    return state;
+}
+
 const socialMediaApp = combineReducers({
     posts,
     currentUser,
-    postsVisible
+    postsVisible,
+    users
 });
 
 export default socialMediaApp;
