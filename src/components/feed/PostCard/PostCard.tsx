@@ -4,18 +4,20 @@ import './PostCard.css';
 import {PostCardProps} from "./PostCardContainer";
 import CommentListContainer from "../CommentCard/CommentListContainer";
 import LeaveCommentContainer from "../CommentCard/LeaveCommentContainer";
+import PostCardDetailedContainer from "./PostCardDetailedContainer";
 
 interface PostCardState {
     leaveComment: boolean;
     editPost: boolean;
     editedContent: string;
+    focusView: boolean;
 }
 
 class PostCard extends Component<PostCardProps, PostCardState> {
 
     constructor(props: PostCardProps) {
         super(props);
-        this.state = {leaveComment: false, editPost: false, editedContent: this.props.post.content};
+        this.state = {leaveComment: false, editPost: false, editedContent: this.props.post.content, focusView: false};
         this.handleLike = this.handleLike.bind(this);
         this.handleDislike = this.handleDislike.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -24,6 +26,8 @@ class PostCard extends Component<PostCardProps, PostCardState> {
         this.handleEdit = this.handleEdit.bind(this);
         this.submitEdit= this.submitEdit.bind(this);
         this.handleEditChange = this.handleEditChange.bind(this);
+        this.focusView = this.focusView.bind(this);
+        this.closeFocusView = this.closeFocusView.bind(this);
     }
 
     public handleLike(event:any){
@@ -75,18 +79,32 @@ class PostCard extends Component<PostCardProps, PostCardState> {
         console.log('submit');
     }
 
+    public focusView(event:any) {
+        event.preventDefault();
+        this.setState({focusView: true});
+    }
+
+    public closeFocusView() {
+        this.setState({focusView: false});
+    }
+
 
     render() {
         return (
             <div id="posts-content">
                 <div className="card" style={{marginBottom: this.state.leaveComment || this.props.post.commentsVisible ? '0': '2vh'}}>
                     <div className="header-footer header dual-container">
-                        <h3>{this.props.poster} posted something</h3>
-                        {this.props.currentUserID === this.props.post.id &&
+                        <h3 className="hoverable" onClick={this.focusView}>{this.props.poster} posted something</h3>
+
+                        {this.props.currentUserID === this.props.post.userID &&
                         (<div className="side-by-side-icons">
                             <i className="material-icons show-hide" onClick={this.handleEdit}>edit</i>
                             <i className="material-icons show-hide" onClick={this.handleDelete}>delete</i>
                         </div>)}
+                        {this.state.focusView && (
+                            <div>
+                                <PostCardDetailedContainer postID={this.props.id} closeFocusView={this.closeFocusView}/>
+                            </div>)}
                     </div>
                         <div id="text-container">
                             <p contentEditable={this.state.editPost} onChange={this.handleEditChange} suppressContentEditableWarning={true}>{this.props.post.content}</p>

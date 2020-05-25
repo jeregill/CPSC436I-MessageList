@@ -73,3 +73,40 @@ div.post-reactions:hover {
     justify-self: flex-end;
     margin: 0 1vw 1vh 1vw;
 }
+
+.pop-up {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.pop-up-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 1vh;
+    width: 80%; /* Could be more or less, depending on screen size */
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.focused-paragraph {
+    border-style: inset;
+}
+
+.focused-span {
+    font-weight: bolder;
+}
+
+#right {
+    align-self: center;
+    justify-self: flex-end;
+}
+
+.hoverable:hover{
+    cursor: pointer;;
+}

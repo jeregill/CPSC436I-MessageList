@@ -21,7 +21,7 @@ export enum USER_ACTIONS {
     DELETE_USER = 'DELETE_USER',
 }
 
-let postID: number = 0;
+let postID: number = 5;
 
 // Action creators
 export function likePost(id: number): action {
