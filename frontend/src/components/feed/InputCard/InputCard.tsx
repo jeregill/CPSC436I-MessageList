@@ -48,10 +48,10 @@ class InputCard extends Component<InputCardProps, InputCardState> {
     }
 
     public dateToString(): string {
-        const dateNow = Date.now();
-        const month = MONTHS[Date.prototype.getMonth()];
-        const day = Date.prototype.getDay();
-        const time = this.getTime(Date.prototype.getHours(), Date.prototype.getMinutes());
+        const dateNow = new Date();
+        const month = MONTHS[dateNow.getMonth()];
+        const day = dateNow.getDate();
+        const time = this.getTime(dateNow.getHours(), dateNow.getMinutes());
         return month + ' ' + day + ' at ' + time;
     }
 
