@@ -94,8 +94,10 @@ class PostCard extends Component<PostCardProps, PostCardState> {
             <div id="posts-content">
                 <div className="card" style={{marginBottom: this.state.leaveComment || this.props.post.commentsVisible ? '0': '2vh'}}>
                     <div className="header-footer header dual-container">
+                        <div className="post-and-date">
                         <h3 className="hoverable" onClick={this.focusView}>{this.props.poster} posted something</h3>
-
+                            <p className="date-text">{"Posted on " + this.props.post.date}</p>
+                        </div>
                         {this.props.currentUserID === this.props.post.userID &&
                         (<div className="side-by-side-icons">
                             <i className="material-icons show-hide" onClick={this.handleEdit}>edit</i>

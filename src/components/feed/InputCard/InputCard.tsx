@@ -9,6 +9,11 @@ interface InputCardState {
     username: string;
 }
 
+const MONTHS = [
+    "January","February","March","April","May","June","July",
+        "August","September","October","November","December"
+]
+
 class InputCard extends Component<InputCardProps, InputCardState> {
 
     constructor(props: InputCardProps) {
@@ -42,6 +47,22 @@ class InputCard extends Component<InputCardProps, InputCardState> {
         this.setState({textContent: ''});
     }
 
+    public dateToString(): string {
+        const dateNow = Date.now();
+        const month = MONTHS[Date.prototype.getMonth()];
+        const day = Date.prototype.getDay();
+        const time = this.getTime(Date.prototype.getHours(), Date.prototype.getMinutes());
+        return month + ' ' + day + ' at ' + time;
+    }
+
+    public getTime(hours: number, minutes: number): string {
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        const strMinutes = minutes < 10 ? '0' + minutes.toString() : minutes.toString();
+        return hours.toString() + ':' + strMinutes + ' ' + ampm;
+    }
+
     public createPost(): Post {
         return {
             userID: this.props.userID,
@@ -50,7 +71,8 @@ class InputCard extends Component<InputCardProps, InputCardState> {
             dislikes: 0,
             comments: [],
             commentsVisible: false,
-            content: this.state.textContent
+            content: this.state.textContent,
+            date: this.dateToString()
         };
     }
 

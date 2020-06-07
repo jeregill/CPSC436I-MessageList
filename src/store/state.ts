@@ -13,6 +13,7 @@ export interface Post {
     dislikes: number;
     comments: string[];
     commentsVisible: boolean;
+    date: string;
 }
 
 export interface User {
