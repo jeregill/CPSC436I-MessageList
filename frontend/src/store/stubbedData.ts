@@ -5,7 +5,6 @@ export const initialUser: User = {
     id: 1,
     name: 'Larry David',
     profilePhoto: 'Empty',
-    posts: [],
     followers: [],
     following: []
 }
@@ -14,7 +13,6 @@ export const user2: User = {
     id: 2,
     name: 'Jerry Seinfeld',
     profilePhoto: 'Empty',
-    posts: [],
     followers: [],
     following: []
 };
@@ -23,7 +21,6 @@ export const user3: User = {
     id: 3,
     name: 'Jason Alexander',
     profilePhoto: 'Empty',
-    posts: [],
     followers: [],
     following: []
 };
@@ -32,7 +29,6 @@ export const user4: User = {
     id: 4,
     name: 'Michael Richards',
     profilePhoto: 'Empty',
-    posts: [],
     followers: [],
     following: []
 };

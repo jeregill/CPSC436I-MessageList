@@ -20,7 +20,6 @@ export interface User {
     id: number;
     name: string;
     profilePhoto: string;
-    posts: Post[];
     followers: User[];
     following: User[];
 }
