@@ -9,11 +9,11 @@ interface CommentStateToProps {
 }
 
 interface CommentDispatchToProps {
-    commentPost: (id: number, commentContent: string) => void;
+    commentPost: (id: string, commentContent: string) => void;
 }
 
 interface CommentOwnProps{
-    id: number;
+    id: string;
 }
 
 export type CommentCardProps = CommentStateToProps & CommentDispatchToProps & CommentOwnProps
@@ -28,7 +28,7 @@ const mapStateToProps = (state: State): CommentStateToProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch<action>): CommentDispatchToProps => {
     return {
-        commentPost: (id: number, commentContent: string) => dispatch(commentPost(id, commentContent))
+        commentPost: (id: string, commentContent: string) => dispatch(commentPost(id, commentContent))
     }
 }
 

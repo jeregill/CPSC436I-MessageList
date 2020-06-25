@@ -6,7 +6,7 @@ import {Dispatch} from "react";
 
 interface InputCardStateToProps {
   username: string;
-  userID: number;
+  userID: string;
 }
 
 interface InputCardDispatchToProps {

@@ -5,11 +5,11 @@ import PostCardDetailed from "./PostCardDetailed";
 interface PostCardDetailedStateToProps {
     post: Post;
     poster:string;
-    currentUserID: number;
+    currentUserID: string;
 }
 
 interface PostCardDetailedOwnProps {
-    postID: number;
+    postID: string;
     closeFocusView: () => void;
 }
 

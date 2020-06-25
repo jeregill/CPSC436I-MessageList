@@ -6,19 +6,19 @@ import PostCard from "./PostCard";
 interface PostCardStateToProps {
     post: Post;
     poster:string;
-    currentUserID: number;
+    currentUserID: string;
 }
 
 interface PostCardDispatchToProps {
-    likePost: (id: number) => void;
-    dislikePost: (id: number) => void;
-    showComments: (id:number) => void;
-    editPost: (id:number, editedContent: string) => void;
-    deletePost: (id:number) => void;
+    likePost: (id: string) => void;
+    dislikePost: (id: string) => void;
+    showComments: (id:string) => void;
+    editPost: (id:string, editedContent: string) => void;
+    deletePost: (id:string) => void;
 }
 
 interface PostCardOwnProps {
-    id: number;
+    id: string;
 }
 
 export type PostCardProps = PostCardStateToProps & PostCardDispatchToProps & PostCardOwnProps;
@@ -38,11 +38,11 @@ const mapStateToProps = (state: State, ownProps: PostCardOwnProps): PostCardStat
 
 const mapDispatchToProps = (dispatch: any): PostCardDispatchToProps => {
     return {
-        likePost: (id: number) => dispatch(likePost(id)),
-        dislikePost: (id: number) => dispatch(dislikePost(id)),
-        showComments: (id: number) => dispatch(toggleComments(id)),
-        editPost: (id: number, editedContent:string) => dispatch(editPost(editedContent,id)),
-        deletePost: (id:number) => dispatch(deletePost(id))
+        likePost: (id: string) => dispatch(likePost(id)),
+        dislikePost: (id: string) => dispatch(dislikePost(id)),
+        showComments: (id: string) => dispatch(toggleComments(id)),
+        editPost: (id: string, editedContent:string) => dispatch(editPost(editedContent,id)),
+        deletePost: (id:string) => dispatch(deletePost(id))
     }
 }
 

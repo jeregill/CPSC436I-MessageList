@@ -21,17 +21,15 @@ export enum USER_ACTIONS {
     DELETE_USER = 'DELETE_USER',
 }
 
-let postID: number = 5;
-
 // Action creators
-export function likePost(id: number): action {
+export function likePost(id: string): action {
     return {
         type: POST_ACTIONS.LIKE_POST,
         payload: id
     }
 }
 
-export function dislikePost(id: number): action {
+export function dislikePost(id: string): action {
     return {
         type: POST_ACTIONS.DISLIKE_POST,
         payload: id
@@ -41,32 +39,32 @@ export function dislikePost(id: number): action {
 export function addPost(content: Post): action {
     return {
         type: POST_ACTIONS.ADD_POST,
-        payload: {...content, id: ++postID}
+        payload: {...content, id: '6'}
     }
 }
 
-export function editPost(editedContent: string, id: number): action {
+export function editPost(editedContent: string, id: string): action {
     return {
         type: POST_ACTIONS.EDIT_POST,
         payload: {editedContent, id}
     }
 }
 
-export function deletePost(id: number): action {
+export function deletePost(id: string): action {
     return {
         type: POST_ACTIONS.DELETE_POST,
         payload: id
     }
 }
 
-export function commentPost(id: number, commentContent:string): action {
+export function commentPost(id: string, commentContent:string): action {
     return {
         type: POST_ACTIONS.COMMENT_POST,
         payload: {id, commentContent}
     }
 }
 
-export function toggleComments(id: number): action {
+export function toggleComments(id: string): action {
     return {
         type: POST_ACTIONS.TOGGLE_COMMENTS,
         payload: id

@@ -6,9 +6,9 @@ export interface State {
 }
 
 export interface Post {
-    id: number;
+    id: string;
     content: string;
-    userID: number;
+    userID: string;
     likes: number;
     dislikes: number;
     comments: string[];
@@ -17,9 +17,6 @@ export interface Post {
 }
 
 export interface User {
-    id: number;
+    id: string;
     name: string;
-    profilePhoto: string;
-    followers: User[];
-    following: User[];
 }

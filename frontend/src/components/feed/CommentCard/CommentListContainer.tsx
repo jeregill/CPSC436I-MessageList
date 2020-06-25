@@ -10,10 +10,10 @@ interface CommentListStateToProps {
 }
 
 interface CommentListDispatchToProps {
-    toggleComments: (id: number) => void;
+    toggleComments: (id: string) => void;
 }
 interface CommentListOwnProps {
-    id: number;
+    id: string;
 }
 
 export type CommentListProps = CommentListStateToProps & CommentListDispatchToProps & CommentListOwnProps;
@@ -31,7 +31,7 @@ const mapStateToProps = (state: State, ownProps: CommentListOwnProps): CommentLi
 
 const mapDispatchToProps = (dispatch: Dispatch<action>): CommentListDispatchToProps => {
     return {
-        toggleComments: (id: number) => dispatch(toggleComments(id))
+        toggleComments: (id: string) => dispatch(toggleComments(id))
     }
 }
 
