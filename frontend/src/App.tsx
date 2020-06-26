@@ -6,6 +6,8 @@ import InputCardContainer from "./components/feed/InputCard/InputCardContainer";
 import axios from 'axios';
 import {postsURI, usersURI} from "./store/endpoints";
 import Spinner from "./components/spinner/spinner";
+import {useDispatch} from "react-redux";
+import {POST_ACTIONS, USER_ACTIONS} from "./actions/actions";
 
 function App() {
     const [postsLoaded, loadPosts] = useState(
@@ -15,22 +17,30 @@ function App() {
         false
     )
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         async function fetchPosts() {
             let response = await axios(postsURI);
             loadPosts(true);
-            console.log(response);
+            for(let post of response.data) {
+                post['commentsVisible'] = false;
+            }
+            dispatch({type: POST_ACTIONS.FETCH_POSTS, payload: response.data})
         }
 
         async function fetchUsers(){
             let response = await axios(usersURI);
-            loadUsers(true);
-            console.log(response);
-
+            dispatch({type: USER_ACTIONS.FETCH_USERS, payload: response.data})
+            dispatch({type:USER_ACTIONS.FETCH_CURRENT_USER, payload: response.data[0]});
         }
 
-        fetchPosts();
-        fetchUsers();
+        fetchPosts().then(() => {
+            loadPosts(true);
+        });
+        fetchUsers().then(()=> {
+            loadUsers(true);
+        });
     }, [])
 
     if(postsLoaded && usersLoaded){

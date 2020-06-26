@@ -11,9 +11,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:postId', async (req, res, next) => {
     try {
-        console.log(req.params);
         const post = await Post.findById(req.params.postId);
-        console.log(post);
         res.send(post);
     } catch {
         res.status(404);

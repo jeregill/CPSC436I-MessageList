@@ -6,7 +6,7 @@ export interface State {
 }
 
 export interface Post {
-    id: string;
+    _id: string;
     content: string;
     userID: string;
     likes: number;
@@ -17,6 +17,6 @@ export interface Post {
 }
 
 export interface User {
-    id: string;
+    _id: string;
     name: string;
 }

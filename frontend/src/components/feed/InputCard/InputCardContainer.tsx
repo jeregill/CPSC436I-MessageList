@@ -20,7 +20,7 @@ const mapStateToProps = (state: State): InputCardStateToProps => {
   const { currentUser } = state;
   return {
     username: currentUser.name,
-    userID: currentUser.id
+    userID: currentUser._id
   }
 }
 

@@ -17,14 +17,14 @@ export type PostCardDetailedProps = PostCardDetailedStateToProps & PostCardDetai
 
 const mapStateToProps = (state: State, ownProps: PostCardDetailedOwnProps): PostCardDetailedStateToProps => {
     const { posts, currentUser, users } = state;
-    const currPost = posts.find(p => p.id === ownProps.postID);
+    const currPost = posts.find(p => p._id === ownProps.postID);
     // @ts-ignore
-    const posterName = users.find(u=> u.id === currPost.userID)
+    const posterName = users.find(u=> u._id === currPost.userID)
     return {
         post: currPost,
         // @ts-ignore
         poster: posterName.name,
-        currentUserID: currentUser.id
+        currentUserID: currentUser._id
     } as PostCardDetailedStateToProps
 }
 

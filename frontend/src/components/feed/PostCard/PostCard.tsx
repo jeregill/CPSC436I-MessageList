@@ -32,22 +32,22 @@ class PostCard extends Component<PostCardProps, PostCardState> {
 
     public handleLike(event:any){
         event.preventDefault();
-        if (this.props.post.id != null) {
-            this.props.likePost(this.props.post.id);
+        if (this.props.post._id != null) {
+            this.props.likePost(this.props.post._id);
         }
     }
 
     public handleDislike(event:any){
         event.preventDefault();
-        if (this.props.post.id != null) {
-            this.props.dislikePost(this.props.post.id);
+        if (this.props.post._id != null) {
+            this.props.dislikePost(this.props.post._id);
         }
     }
 
     public handleDelete(event:any){
         event.preventDefault();
-        if (this.props.post.id != null) {
-            this.props.deletePost(this.props.post.id);
+        if (this.props.post._id != null) {
+            this.props.deletePost(this.props.post._id);
         }
     }
 
@@ -59,7 +59,7 @@ class PostCard extends Component<PostCardProps, PostCardState> {
     public showComments(event:any) {
         event.preventDefault();
         this.setState({leaveComment: false})
-        this.props.showComments(this.props.post.id);
+        this.props.showComments(this.props.post._id);
     }
 
     public handleEdit(event: any) {
@@ -74,9 +74,8 @@ class PostCard extends Component<PostCardProps, PostCardState> {
 
     public submitEdit(event:any) {
         event.preventDefault();
-        this.props.editPost(this.props.post.id, this.state.editedContent);
+        this.props.editPost(this.props.post._id, this.state.editedContent);
         this.setState({editPost: false})
-        console.log('submit');
     }
 
     public focusView(event:any) {
@@ -136,8 +135,8 @@ class PostCard extends Component<PostCardProps, PostCardState> {
                             </div>
                         </div>
                 </div>
-                {this.state.leaveComment && (<LeaveCommentContainer id={this.props.post.id}/>)}
-                {this.props.post.commentsVisible && (<CommentListContainer id={this.props.post.id}/>)}
+                {this.state.leaveComment && (<LeaveCommentContainer id={this.props.post._id}/>)}
+                {this.props.post.commentsVisible && (<CommentListContainer id={this.props.post._id}/>)}
 
             </div>
         );

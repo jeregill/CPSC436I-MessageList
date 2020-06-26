@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const PostSchema = mongoose.Schema({
     content: String,
-    userID: Number,
+    userID: String,
     likes: Number,
     dislikes: Number,
     comments: Array,

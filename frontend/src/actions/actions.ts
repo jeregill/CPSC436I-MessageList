@@ -1,4 +1,4 @@
-import {Post} from "../store/state";
+import {Post, User} from "../store/state";
 
 export interface action {
     type: POST_ACTIONS | USER_ACTIONS;
@@ -13,12 +13,15 @@ export enum POST_ACTIONS {
     DISLIKE_POST = 'DISLIKE_POST',
     COMMENT_POST = 'COMMENT_POST',
     TOGGLE_COMMENTS = 'TOGGLE_COMMENTS',
-    EDIT_POST = 'EDIT_POST'
+    EDIT_POST = 'EDIT_POST',
+    FETCH_POSTS = 'FETCH_POSTS'
 }
 
 export enum USER_ACTIONS {
     ADD_USER = 'ADD_USER',
     DELETE_USER = 'DELETE_USER',
+    FETCH_USERS = 'FETCH_USERS',
+    FETCH_CURRENT_USER = 'FETCH_CURRENT_USER'
 }
 
 // Action creators
@@ -76,4 +79,24 @@ export function togglePosts(): action {
         type: POST_ACTIONS.TOGGLE_POSTS,
         payload: null
     }
+}
+
+export function fetchPosts(posts: Post[]): action {
+    return {
+        type: POST_ACTIONS.FETCH_POSTS, payload: posts
+    }
+}
+
+export function fetchUsers(users: User[]): action {
+    return {
+        type: USER_ACTIONS.FETCH_USERS, payload: users
+    }
+}
+
+export function fetchCurrentUser(user: User): action {
+    return {
+        type: USER_ACTIONS.FETCH_CURRENT_USER, payload: user
+    }
+
+
 }

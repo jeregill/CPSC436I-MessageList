@@ -31,7 +31,7 @@ class PostsList extends Component<PostListProps,PostsListState> {
                     </div>
                     <div>
                         {this.props.posts.map((post: Post) => (
-                            <PostCardContainer id={post.id} key={post.id}/>
+                            <PostCardContainer id={post._id} key={post._id}/>
                         ))}
                     </div>
                 </div>

@@ -20,7 +20,7 @@ export type CommentListProps = CommentListStateToProps & CommentListDispatchToPr
 
 const mapStateToProps = (state: State, ownProps: CommentListOwnProps): CommentListStateToProps => {
     const { posts } = state;
-    const post = posts.find(post => post.id === ownProps.id);
+    const post = posts.find(post => post._id === ownProps.id);
     if(post !== undefined) {
         return {
             comments: post.comments,
