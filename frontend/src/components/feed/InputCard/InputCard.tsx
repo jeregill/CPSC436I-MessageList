@@ -1,7 +1,7 @@
 import React, {ChangeEvent, Component} from 'react';
 import './InputCard.css';
 import '../../../styles/card.css';
-import {Post} from "../../../store/state";
+import {dateToString, Post} from "../../../store/state";
 import {InputCardProps} from "./InputCardContainer";
 
 interface InputCardState {
@@ -9,12 +9,9 @@ interface InputCardState {
     username: string;
 }
 
-const MONTHS = [
-    "January","February","March","April","May","June","July",
-        "August","September","October","November","December"
-]
 
 class InputCard extends Component<InputCardProps, InputCardState> {
+
 
     constructor(props: InputCardProps) {
         super(props);
@@ -30,7 +27,7 @@ class InputCard extends Component<InputCardProps, InputCardState> {
     public handleSubmitPost(event:any): void {
         event.preventDefault();
         this.setState({textContent: ''});
-        this.props.submitPost(this.createPost());
+        this.props.submitPostAsync(this.createPost());
     }
 
     public handleChange(event: ChangeEvent<HTMLElement>): void{
@@ -47,21 +44,7 @@ class InputCard extends Component<InputCardProps, InputCardState> {
         this.setState({textContent: ''});
     }
 
-    public dateToString(): string {
-        const dateNow = new Date();
-        const month = MONTHS[dateNow.getMonth()];
-        const day = dateNow.getDate();
-        const time = this.getTime(dateNow.getHours(), dateNow.getMinutes());
-        return month + ' ' + day + ' at ' + time;
-    }
 
-    public getTime(hours: number, minutes: number): string {
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
-        const strMinutes = minutes < 10 ? '0' + minutes.toString() : minutes.toString();
-        return hours.toString() + ':' + strMinutes + ' ' + ampm;
-    }
 
     public createPost(): Post {
         return {
@@ -72,7 +55,7 @@ class InputCard extends Component<InputCardProps, InputCardState> {
             comments: [],
             commentsVisible: false,
             content: this.state.textContent,
-            date: this.dateToString()
+            date: dateToString()
         };
     }
 

@@ -1,5 +1,5 @@
 import {State} from "../../../store/state";
-import {action, commentPost} from "../../../actions/actions";
+import {action, commentPostAsync} from "../../../actions/actions";
 import {connect} from "react-redux";
 import {Dispatch} from "react";
 import LeaveComment from "./LeaveComment";
@@ -9,7 +9,7 @@ interface CommentStateToProps {
 }
 
 interface CommentDispatchToProps {
-    commentPost: (id: string, commentContent: string) => void;
+    commentPost: (id: string, comment: string) => void;
 }
 
 interface CommentOwnProps{
@@ -28,7 +28,8 @@ const mapStateToProps = (state: State): CommentStateToProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch<action>): CommentDispatchToProps => {
     return {
-        commentPost: (id: string, commentContent: string) => dispatch(commentPost(id, commentContent))
+        // @ts-ignore
+        commentPost: (id: string, comment: string) => dispatch(commentPostAsync(id, comment))
     }
 }
 

@@ -5,6 +5,7 @@ import {PostCardProps} from "./PostCardContainer";
 import CommentListContainer from "../CommentCard/CommentListContainer";
 import LeaveCommentContainer from "../CommentCard/LeaveCommentContainer";
 import PostCardDetailedContainer from "./PostCardDetailedContainer";
+import {dateToString} from "../../../store/state";
 
 interface PostCardState {
     leaveComment: boolean;
@@ -33,21 +34,21 @@ class PostCard extends Component<PostCardProps, PostCardState> {
     public handleLike(event:any){
         event.preventDefault();
         if (this.props.post._id != null) {
-            this.props.likePost(this.props.post._id);
+            this.props.likePostAsync(this.props.post._id);
         }
     }
 
     public handleDislike(event:any){
         event.preventDefault();
         if (this.props.post._id != null) {
-            this.props.dislikePost(this.props.post._id);
+            this.props.dislikePostAsync(this.props.post._id);
         }
     }
 
     public handleDelete(event:any){
         event.preventDefault();
         if (this.props.post._id != null) {
-            this.props.deletePost(this.props.post._id);
+            this.props.deletePostAsync(this.props.post._id);
         }
     }
 
@@ -69,12 +70,12 @@ class PostCard extends Component<PostCardProps, PostCardState> {
 
     public handleEditChange(event:any){
         event.preventDefault();
-        this.setState({editedContent: (event.target as HTMLInputElement).value})
+        this.setState({editedContent: (event.currentTarget as HTMLInputElement).innerHTML})
     }
 
     public submitEdit(event:any) {
         event.preventDefault();
-        this.props.editPost(this.props.post._id, this.state.editedContent);
+        this.props.editPostAsync(this.props.post._id, this.state.editedContent, dateToString());
         this.setState({editPost: false})
     }
 
@@ -108,7 +109,7 @@ class PostCard extends Component<PostCardProps, PostCardState> {
                             </div>)}
                     </div>
                         <div id="text-container">
-                            <p contentEditable={this.state.editPost} onChange={this.handleEditChange} suppressContentEditableWarning={true}>{this.props.post.content}</p>
+                            <p contentEditable={this.state.editPost} onInput={this.handleEditChange} suppressContentEditableWarning={true}>{this.props.post.content}</p>
                             {this.state.editPost && (<button onClick={this.submitEdit} type="button" id="submit-edit-button">Submit Edit</button>)}
                             <div className="tri-count-container">
                                 <div className="divider"></div>

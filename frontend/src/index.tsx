@@ -5,10 +5,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import socialMediaApp from "./reducers/reducers";
-import {  createStore} from "redux";
-import {composeWithDevTools} from "redux-devtools-extension";
+import {applyMiddleware, compose, createStore} from "redux";
+import thunk from "redux-thunk";
 
-const store = createStore(socialMediaApp, composeWithDevTools())
+const store = createStore(socialMediaApp, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

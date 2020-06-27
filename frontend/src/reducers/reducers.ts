@@ -55,7 +55,7 @@ function posts(state: Post[]=[], action: any) {
             return state.map((post) => {
                 if (post._id === action.payload.id) {
                     return {
-                        ...post, content: action.payload.editedContent
+                        ...post, content: action.payload.editedContent, date: action.payload.date
                     }
                 }
                 return post;

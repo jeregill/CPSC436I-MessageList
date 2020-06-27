@@ -1,5 +1,11 @@
 import {Post, State} from "../../../store/state";
-import {deletePost, dislikePost, editPost, likePost, toggleComments} from "../../../actions/actions";
+import {
+    deletePostAsync,
+    dislikePostAsync,
+    editPostAsync,
+    likePostAsync,
+    toggleComments
+} from "../../../actions/actions";
 import {connect} from "react-redux";
 import PostCard from "./PostCard";
 
@@ -10,11 +16,11 @@ interface PostCardStateToProps {
 }
 
 interface PostCardDispatchToProps {
-    likePost: (id: string) => void;
-    dislikePost: (id: string) => void;
+    likePostAsync: (id: string) => void;
+    dislikePostAsync: (id: string) => void;
     showComments: (id:string) => void;
-    editPost: (id:string, editedContent: string) => void;
-    deletePost: (id:string) => void;
+    editPostAsync: (id:string, editedContent: string, date: string) => void;
+    deletePostAsync: (id:string) => void;
 }
 
 interface PostCardOwnProps {
@@ -38,11 +44,11 @@ const mapStateToProps = (state: State, ownProps: PostCardOwnProps): PostCardStat
 
 const mapDispatchToProps = (dispatch: any): PostCardDispatchToProps => {
     return {
-        likePost: (id: string) => dispatch(likePost(id)),
-        dislikePost: (id: string) => dispatch(dislikePost(id)),
+        likePostAsync: (id: string) => dispatch(likePostAsync(id)),
+        dislikePostAsync: (id: string) => dispatch(dislikePostAsync(id)),
         showComments: (id: string) => dispatch(toggleComments(id)),
-        editPost: (id: string, editedContent:string) => dispatch(editPost(editedContent,id)),
-        deletePost: (id:string) => dispatch(deletePost(id))
+        editPostAsync: (id: string, editedContent:string, date: string) => dispatch(editPostAsync(id, editedContent, date)),
+        deletePostAsync: (id:string) => dispatch(deletePostAsync(id)),
     }
 }
 
