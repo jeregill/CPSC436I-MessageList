@@ -58,9 +58,12 @@ mongoose.connect(uri, {
         res.render('error');
       });
 
-      app.listen(9000, () => {
-          console.log('Server has started...')
-      })
+        app.set( 'port', ( process.env.PORT || 9000 ));
+
+        // Start node server
+        app.listen( app.get( 'port' ), function() {
+            console.log( 'Node server is running on port ' + app.get( 'port' ));
+        });
 
     })
     .catch(err => console.log(err));
