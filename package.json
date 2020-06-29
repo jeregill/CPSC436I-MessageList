@@ -1,0 +1,19 @@
+{
+  "name": "message-list",
+  "version": "1.0.0",
+  "description": "message list application",
+  "scripts": {
+    "heroku-prebuild": "cd api && npm install && cd ../client && npm install && npm run build",
+    "start": "cd api && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeregill/CPSC436I-MessageList.git"
+  },
+  "author": "Jeremy Gill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeregill/CPSC436I-MessageList/issues"
+  },
+  "homepage": "https://github.com/jeregill/CPSC436I-MessageList#readme"
+}

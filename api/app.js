@@ -58,7 +58,7 @@ mongoose.connect(uri, {
         res.render('error');
       });
 
-        app.set( 'port', ( process.env.PORT || 9000 ));
+        app.set( 'port', ( process.env.PORT || 3000 ));
 
         // Start node server
         app.listen( app.get( 'port' ), function() {
