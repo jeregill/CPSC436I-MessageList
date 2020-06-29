@@ -1,0 +1,56 @@
+:root {
+    --main-color: #5D5C61;
+    --secondary-color: #938e94;
+    --tertiary-color: #7395AE;
+    --fourth-color: #557A95;
+    --fifth-color: #B1A296;
+}
+html, body {
+    font-family: Roboto, sans-serif !important;
+    padding-bottom: 50px;
+    font-size: 16px;
+}
+
+.material-icons {
+    color: var(--fourth-color);
+    vertical-align: middle;
+    font-size: 2rem;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+}
+
+textarea, input {
+    font-family: Roboto, 'sans-serif' !important;
+}
+
+button {
+    background-color: var(--fourth-color);
+    border: none;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    padding: 1vh 0.25vw;
+    border-radius: 3px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    font-size: 1rem;
+    font-family: Roboto,'sans-serif';
+}
+
+button:hover {
+    background-color: var(--tertiary-color);
+}
+
+button:disabled {
+    background-color: gray;
+    cursor: auto;
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+    html, body {
+        font-size: 9px;
+        padding-bottom: 20px;
+    }
+}
+

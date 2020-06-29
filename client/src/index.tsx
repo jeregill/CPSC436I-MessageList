@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import socialMediaApp from "./reducers/reducers";
+import {applyMiddleware, compose, createStore} from "redux";
+import thunk from "redux-thunk";
+import './styles/card.css';
+import './styles/global.css';
+
+const store = createStore(socialMediaApp, compose(applyMiddleware(thunk)));
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </ Provider>,
   document.getElementById('root')
 );
 
