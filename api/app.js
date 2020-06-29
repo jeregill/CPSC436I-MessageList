@@ -21,7 +21,10 @@ mongoose.connect(uri, {
       console.log("MongoDB Connected…");
       app = express();
 
-// view engine setup
+        // Serve static files from the React frontend app
+        app.use(express.static(path.join(__dirname, '../client/build')))
+
+        // view engine setup
       app.set('views', path.join(__dirname, 'views'));
       app.set('view engine', 'jade');
       app.use(bodyParser.json());
@@ -34,6 +37,10 @@ mongoose.connect(uri, {
       app.use(cors());
       app.use('/users', usersRouter);
       app.use('/posts', postsRouter);
+        // Anything that doesn't match the above, send back the index.html file
+        app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname + '/../client/build/index.html'))
+        })
 
 // catch 404 and forward to error handler
       app.use(function(req, res, next) {
@@ -57,37 +64,3 @@ mongoose.connect(uri, {
 
     })
     .catch(err => console.log(err));
-
-// const app = express();
-//
-// // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-//
-// app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-//
-// app.use(cors());
-// app.use('/users', usersRouter);
-// app.use('/posts', postsRouter);
-//
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
-//
-// // error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-//
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
-//
-// module.exports = app;
