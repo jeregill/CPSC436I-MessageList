@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import TopNav from "./components/TopNav/TopNav";
 import PostsListContainer from "./components/PostCard/PostsListContainer";
 import InputCardContainer from "./components/InputCard/InputCardContainer";
-import axios from 'axios';
+import axios from "axios";
 import {postsURI, usersURI} from "./utils/endpoints";
 import Spinner from "./components/spinner/spinner";
 import {useDispatch} from "react-redux";
